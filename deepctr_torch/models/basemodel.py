@@ -186,7 +186,7 @@ class BaseModel(nn.Module):
         if batch_size is None:
             batch_size = 256
         train_loader = DataLoader(
-            dataset=train_tensor_data, shuffle=shuffle, batch_size=batch_size)
+            dataset=train_tensor_data, shuffle=shuffle, batch_size=batch_size, num_workers=32)
 
         print(self.device, end="\n")
         model = self.train()

@@ -22,13 +22,14 @@ if __name__ == "__main__":
     dense_features = ['I' + str(i) for i in range(1, 14)]
     target = ['label']
 
+    # data = pd.read_csv('criteo_sample.txt')
     # data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt',
     #                    names=target + dense_features + sparse_features, sep='\t', nrows=10000)
     data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt',
                        names=target + dense_features + sparse_features, sep='\t')
     print(data.shape)
-    import sys
-    sys.exit(1)
+    # import sys
+    # sys.exit(1)
 
 
     data[sparse_features] = data[sparse_features].fillna('-1', )
@@ -76,7 +77,7 @@ if __name__ == "__main__":
     model.compile("adagrad", "binary_crossentropy",
                   metrics=["binary_crossentropy", "auc"], )
     model.fit(train_model_input, train[target].values,
-              batch_size=1024, epochs=20, validation_split=0.0, verbose=2)
+              batch_size=1024, epochs=20, validation_split=0.1, verbose=1)
 
     pred_ans = model.predict(test_model_input, 256)
     print("")

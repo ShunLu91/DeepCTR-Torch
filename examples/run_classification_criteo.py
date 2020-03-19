@@ -11,6 +11,10 @@ from deepctr_torch.models import *
 if __name__ == "__main__":
     data = pd.read_csv('/home/work/dataset/criteo/train.txt')
     # data = pd.read_csv('./criteo_sample.txt')
+    print(data.columns)
+
+    import sys
+    sys.exit(1)
 
     # print(data.columns)
     # import sys

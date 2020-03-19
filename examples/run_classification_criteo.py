@@ -9,7 +9,6 @@ from deepctr_torch.inputs import SparseFeat, DenseFeat, get_feature_names
 from deepctr_torch.models import *
 
 if __name__ == "__main__":
-    data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt')
     # data = pd.read_csv('./criteo_sample.txt')
     # print(data.columns)
 
@@ -19,16 +18,18 @@ if __name__ == "__main__":
     # print(data.columns)
     # import sys
     # sys.exit(1)
+    # sparse_features = [i for i in range(14, 40)]
+    # dense_features = [i for i in range(1, 14)]
+    sparse_features = ['C' + str(i) for i in range(1, 27)]
+    dense_features = ['I' + str(i) for i in range(1, 14)]
+    target = ['label']
 
-    # sparse_features = ['C' + str(i) for i in range(1, 27)]
-    # dense_features = ['I' + str(i) for i in range(1, 14)]
-    sparse_features = [i for i in range(14, 40)]
-    dense_features = [i for i in range(1, 14)]
+    data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt', names=target + dense_features + sparse_features, sep='\t')
+
 
     data[sparse_features] = data[sparse_features].fillna('-1', )
     data[dense_features] = data[dense_features].fillna(0, )
-    target = 0
-    # target = ['label']
+    # target = 0
 
     # 1.Label Encoding for sparse features,and do simple Transformation for dense features
     for feat in sparse_features:

@@ -9,12 +9,12 @@ from deepctr_torch.inputs import SparseFeat, DenseFeat, get_feature_names
 from deepctr_torch.models import *
 
 if __name__ == "__main__":
-    data = pd.read_csv('/home/work/dataset/criteo/train.txt')
+    data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt')
     # data = pd.read_csv('./criteo_sample.txt')
-    print(data.columns)
+    # print(data.columns)
 
-    import sys
-    sys.exit(1)
+    # import sys
+    # sys.exit(1)
 
     # print(data.columns)
     # import sys

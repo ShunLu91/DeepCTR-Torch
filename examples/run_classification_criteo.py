@@ -16,8 +16,6 @@ if __name__ == "__main__":
     # sys.exit(1)
 
     # print(data.columns)
-    # import sys
-    # sys.exit(1)
     # sparse_features = [i for i in range(14, 40)]
     # dense_features = [i for i in range(1, 14)]
     sparse_features = ['C' + str(i) for i in range(1, 27)]
@@ -28,6 +26,10 @@ if __name__ == "__main__":
     #                    names=target + dense_features + sparse_features, sep='\t', nrows=10000)
     data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt',
                        names=target + dense_features + sparse_features, sep='\t')
+    print(data.shape)
+    import sys
+    sys.exit(1)
+
 
     data[sparse_features] = data[sparse_features].fillna('-1', )
     data[dense_features] = data[dense_features].fillna(0, )

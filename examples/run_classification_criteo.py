@@ -12,12 +12,19 @@ if __name__ == "__main__":
     data = pd.read_csv('/home/work/dataset/criteo/train.txt')
     # data = pd.read_csv('./criteo_sample.txt')
 
-    sparse_features = ['C' + str(i) for i in range(1, 27)]
-    dense_features = ['I' + str(i) for i in range(1, 14)]
+    # print(data.columns)
+    # import sys
+    # sys.exit(1)
+
+    # sparse_features = ['C' + str(i) for i in range(1, 27)]
+    # dense_features = ['I' + str(i) for i in range(1, 14)]
+    sparse_features = [i for i in range(14, 40)]
+    dense_features = [i for i in range(1, 14)]
 
     data[sparse_features] = data[sparse_features].fillna('-1', )
     data[dense_features] = data[dense_features].fillna(0, )
-    target = ['label']
+    target = 0
+    # target = ['label']
 
     # 1.Label Encoding for sparse features,and do simple Transformation for dense features
     for feat in sparse_features:

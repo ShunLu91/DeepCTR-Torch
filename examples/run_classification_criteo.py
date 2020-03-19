@@ -24,7 +24,8 @@ if __name__ == "__main__":
     dense_features = ['I' + str(i) for i in range(1, 14)]
     target = ['label']
 
-    data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt', names=target + dense_features + sparse_features, sep='\t')
+    data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt',
+                       names=target + dense_features + sparse_features, sep='\t')
 
 
     data[sparse_features] = data[sparse_features].fillna('-1', )

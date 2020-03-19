@@ -25,8 +25,7 @@ if __name__ == "__main__":
     target = ['label']
 
     data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt',
-                       names=target + dense_features + sparse_features, sep='\t')
-
+                       names=target + dense_features + sparse_features, sep='\t', nrows=1000)
 
     data[sparse_features] = data[sparse_features].fillna('-1', )
     data[dense_features] = data[dense_features].fillna(0, )

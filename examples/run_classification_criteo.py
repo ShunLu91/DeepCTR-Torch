@@ -25,7 +25,7 @@ if __name__ == "__main__":
     target = ['label']
 
     data = pd.read_csv('/home/work/dataset/criteo/raw/train.txt',
-                       names=target + dense_features + sparse_features, sep='\t', nrows=1000)
+                       names=target + dense_features + sparse_features, sep='\t', nrows=10000)
 
     data[sparse_features] = data[sparse_features].fillna('-1', )
     data[dense_features] = data[dense_features].fillna(0, )
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     model.compile("adagrad", "binary_crossentropy",
                   metrics=["binary_crossentropy", "auc"], )
     model.fit(train_model_input, train[target].values,
-              batch_size=128, epochs=100, validation_split=0.0, verbose=2)
+              batch_size=128, epochs=20, validation_split=0.0, verbose=2)
 
     pred_ans = model.predict(test_model_input, 256)
     print("")
